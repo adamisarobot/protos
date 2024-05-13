@@ -5,6 +5,14 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const title = t('title')
+const changeLocale = (locale: string) => {
+  if (locale === 'en') {
+    window.location.href = '/'
+  }
+  if (locale === 'fr') {
+    window.location.href = '/fr'
+  }
+}
 </script>
 
 <template>
@@ -18,6 +26,10 @@ const title = t('title')
         <RouterLink to="/">{{ t('home') }}</RouterLink>
         <RouterLink to="/about">{{ t('about') }}</RouterLink>
       </nav>
+    </div>
+    <div>
+      <button @click="changeLocale('en')">EN</button>
+      <button @click="changeLocale('fr')">FR</button>
     </div>
   </header>
 
