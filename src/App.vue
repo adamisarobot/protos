@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import Button from './components/ui/button/Button.vue'
+import { Toaster } from '@/components/ui/sonner'
+import { toast } from 'vue-sonner'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -30,10 +33,27 @@ const changeLocale = (locale: string) => {
     <div>
       <button @click="changeLocale('en')">EN</button>
       <button @click="changeLocale('fr')">FR</button>
+      <br />
+      <Button
+        variant="destructive"
+        @click="
+          () => {
+            toast('Event has been created', {
+              description: 'Sunday, December 03, 2023 at 9:00 AM',
+              action: {
+                label: 'Undo',
+                onClick: () => console.log('Undo')
+              }
+            })
+          }
+        "
+        >Click me</Button
+      >
     </div>
   </header>
 
   <RouterView />
+  <Toaster class="pointer-events-auto" />
 </template>
 
 <style scoped>
