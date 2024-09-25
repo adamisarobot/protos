@@ -2,6 +2,9 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import { useI18n } from 'vue-i18n'
+import { version } from 'vue'
+
+console.log(version)
 
 const { t } = useI18n()
 const title = t('title')
